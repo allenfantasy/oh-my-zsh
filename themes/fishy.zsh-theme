@@ -7,14 +7,14 @@ _fishy_collapsed_wd() {
       binmode STDOUT, ':encoding(UTF-8)';
    }; s|^$HOME|~|g; s|/([^/])[^/]*(?=/)|/\$1|g
 ")
-} 
+}
 
 local user_color='green'; [ $UID -eq 0 ] && user_color='red'
-PROMPT='%n@%m %{$fg[$user_color]%}$(_fishy_collapsed_wd)%{$reset_color%}%(!.#.>) '
+PROMPT='%n@%m %{$fg[$user_color]%}$(_fishy_collapsed_wd)%{$reset_color%} %(!.#.>) '
 PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 
 local return_status="%{$fg_bold[red]%}%(?..%?)%{$reset_color%}"
-RPROMPT='${return_status}$(git_prompt_info)$(git_prompt_status)%{$reset_color%}'
+RPROMPT='${return_status}$(git_prompt_info)$(git_prompt_status)%{$reset_color%} %{$fg[white]%}[%{$fg[yellow]%}%T%{$fg[white]%}]%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
